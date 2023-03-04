@@ -1,4 +1,4 @@
-import { Banner, SearchBar } from '@/components';
+import { Banner, HomeSection, SearchBar } from '@/components';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
@@ -15,6 +15,7 @@ export default function HomePage() {
           </h1>
           <SearchBar />
         </Banner>
+        <HomeSection />
       </main>
     </Layout>
   );

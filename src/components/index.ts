@@ -1,5 +1,7 @@
 export * from './Banner';
 export * from './buttons';
+export * from './DashboardCard';
+export * from './HomeSection';
 export * from './layout';
 export * from './links';
 export * from './NextImage';
