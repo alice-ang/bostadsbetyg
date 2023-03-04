@@ -32,7 +32,6 @@ export const SearchBar = () => {
         onClick={() =>
           router.push({
             pathname: '/search',
-            query: { school: serachRef.current?.value },
           })
         }
         type='button'

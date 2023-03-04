@@ -1,12 +1,11 @@
-import { Banner, SearchBar } from '@/components';
-import Layout from '@/components/layout/Layout';
+import { Banner, HomeSection, SearchBar } from '@/components';
+import { Layout } from '@/components';
 import Seo from '@/components/Seo';
 
 export default function HomePage() {
   return (
     <Layout>
-      {/* <Seo templateTitle='Home' /> */}
-      <Seo />
+      <Seo templateTitle='Din insyn i hyresmarknaden' />
 
       <main>
         <Banner src='https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply'>
@@ -15,6 +14,7 @@ export default function HomePage() {
           </h1>
           <SearchBar />
         </Banner>
+        <HomeSection />
       </main>
     </Layout>
   );

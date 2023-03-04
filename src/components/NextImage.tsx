@@ -8,9 +8,10 @@ type NextImageProps = {
   imgClassName?: string;
   blurClassName?: string;
   alt: string;
+  fill?: boolean;
 } & (
   | { width: string | number; height: string | number }
-  | { layout: 'fill'; width?: string | number; height?: string | number }
+  | { width?: string | number; height?: string | number }
 ) &
   ImageProps;
 
@@ -21,6 +22,7 @@ type NextImageProps = {
  */
 export default function NextImage({
   useSkeleton = false,
+  fill = false,
   src,
   width,
   height,
@@ -45,6 +47,7 @@ export default function NextImage({
           imgClassName,
           status === 'loading' && clsxm('animate-pulse', blurClassName)
         )}
+        fill={fill}
         src={src}
         width={width}
         height={height}
