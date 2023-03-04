@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   // Put Header or Footer Here
   return (
     <>
@@ -8,4 +8,4 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {children}
     </>
   );
-}
+};
