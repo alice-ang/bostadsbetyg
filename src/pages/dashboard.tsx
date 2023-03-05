@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { GoGraph } from 'react-icons/go';
-import { MdOutlineDashboard, MdOutlineReviews } from 'react-icons/md';
+import { MdClose, MdOutlineDashboard, MdOutlineReviews } from 'react-icons/md';
 import {
   RiEmotionHappyFill,
   RiEmotionNormalFill,
@@ -10,7 +10,7 @@ import {
 
 import clsxm from '@/lib/clsxm';
 
-import { DashboardCard, Layout, RoundedButton } from '@/components';
+import { DashboardCard, RoundedButton } from '@/components';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
@@ -57,7 +57,7 @@ export default function DashboardPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <Layout>
+    <>
       <Seo templateTitle='Översikt' />
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
@@ -103,7 +103,8 @@ export default function DashboardPage() {
                       className='ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
                       onClick={() => setSidebarOpen(false)}
                     >
-                      <span className='sr-only'>Close sidebar</span>X
+                      <span className='sr-only'>Close sidebar</span>
+                      <MdClose size={24} className='text-white' />
                     </button>
                   </div>
                 </Transition.Child>
@@ -139,15 +140,13 @@ export default function DashboardPage() {
                 </div>
                 <div className='flex flex-shrink-0 border-t border-gray-200 p-4'>
                   <div className='flex items-center'>
-                    <div>
-                      <NextImage
-                        height={50}
-                        width={50}
-                        imgClassName='inline-block rounded-full'
-                        src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                        alt=''
-                      />
-                    </div>
+                    <NextImage
+                      height={40}
+                      width={40}
+                      imgClassName='inline-block rounded-full'
+                      src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+                      alt=''
+                    />
                     <div className='ml-3'>
                       <p className='text-base font-medium text-gray-700 group-hover:text-gray-900'>
                         Tom Cook
@@ -209,7 +208,7 @@ export default function DashboardPage() {
               <p className='pb-4 text-xs font-medium'>
                 Få tillgång till fler funktioner.
               </p>
-              <RoundedButton>Uppgradera</RoundedButton>
+              <RoundedButton href='#'>Uppgradera</RoundedButton>
             </div>
           </div>
           <div className='flex flex-shrink-0 border-t border-gray-200 p-4'>
@@ -239,11 +238,11 @@ export default function DashboardPage() {
         <div className='sticky top-0 z-10 bg-white pl-1 pt-1 sm:pl-3 sm:pt-3 lg:hidden'>
           <button
             type='button'
-            className='-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'
+            className='-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500'
             onClick={() => setSidebarOpen(true)}
           >
             <span className='sr-only'>Open sidebar</span>
-            <MdOutlineDashboard className='h-6 w-6' aria-hidden='true' />
+            LOGO
           </button>
         </div>
 
@@ -297,15 +296,24 @@ export default function DashboardPage() {
               </div>
 
               <div className='grid grid-cols-3 gap-4'>
-                <DashboardCard>Test</DashboardCard>
+                <DashboardCard>
+                  <p className='text-lg font-semibold'>Lorem ipsum</p>
+                  <p className='text-sm text-gray-500'>
+                    Lorem ipsum dolor sit amet
+                  </p>
+                </DashboardCard>
                 <DashboardCard className='col-span-2'>
-                  <RoundedButton>Uppgradera</RoundedButton>
+                  <p className='text-lg font-semibold'>Lorem ipsum</p>
+                  <p className='text-sm text-gray-500'>
+                    Lorem ipsum dolor sit amet
+                  </p>
+                  <RoundedButton href='#'>Uppgradera</RoundedButton>
                 </DashboardCard>
               </div>
             </div>
           </div>
         </main>
       </div>
-    </Layout>
+    </>
   );
 }

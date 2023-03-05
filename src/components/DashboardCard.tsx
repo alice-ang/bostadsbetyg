@@ -9,7 +9,12 @@ type DashboardCardProps = {
 
 export const DashboardCard = ({ children, className }: DashboardCardProps) => {
   return (
-    <div className={clsxm(className, 'flex-1 rounded-lg bg-white p-4 shadow')}>
+    <div
+      className={clsxm(
+        className,
+        'flex-1 rounded-lg border border-gray-200 bg-white p-4 shadow-sm '
+      )}
+    >
       {children}
     </div>
   );
