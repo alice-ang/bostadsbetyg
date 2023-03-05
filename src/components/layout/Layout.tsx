@@ -1,10 +1,9 @@
-import * as React from 'react';
+import { Header } from '@/components';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
-  // Put Header or Footer Here
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       {children}
     </>
   );
