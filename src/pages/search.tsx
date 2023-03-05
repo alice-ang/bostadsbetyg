@@ -15,11 +15,11 @@ export default function SearchPage() {
   const [currentTab, setCurrentTab] = useState<string>('Reviews');
   return (
     <Layout>
-      <Seo templateTitle='De bästa lägenheterna nära dig' />
+      <Seo templateTitle='Lägenheter i {{Skövde}}' />
       <main className=' grid h-screen grid-cols-6'>
-        <div className='relative col-span-6 bg-white px-8 md:col-span-4 lg:col-span-3 xl:col-span-2 '>
-          <div className='sticky top-0 left-0 right-0 bg-white pt-6'>
-            <div className='flex items-center justify-between'>
+        <div className='relative col-span-6 bg-white md:col-span-4 lg:col-span-3 xl:col-span-2 '>
+          <div className='sticky top-0 left-0 right-0 bg-white pt-6 '>
+            <div className='flex items-center justify-between px-4 md:px-8'>
               <span className='flex-1'>
                 <SearchList />
               </span>
@@ -27,7 +27,7 @@ export default function SearchPage() {
                 <GoSettings />
               </span>
             </div>
-            <div className='my-4'>badge</div>
+            <div className='my-4 px-4 md:px-8'>badge</div>
             {/* Tabs */}
             <nav
               className='isolate flex divide-x divide-gray-200 rounded-lg shadow'
@@ -72,7 +72,7 @@ export default function SearchPage() {
           </div> */}
 
           {currentTab == 'Reviews' && (
-            <div>
+            <div className='px-4 md:px-8'>
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
                 return <HousingItem key={i} />;
               })}
