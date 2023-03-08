@@ -7,7 +7,7 @@ import { RoundedButton } from '@/components/buttons';
 
 const navigation = [
   { name: 'Sök', href: 'search' },
-  { name: 'För fastighetsbolag', href: '#' },
+  { name: 'För fastighetsbolag', href: 'business' },
 ];
 
 export const Header = () => {
@@ -46,6 +46,7 @@ export const Header = () => {
               {item.name}
             </Link>
           ))}
+          <div className='h-6 border-r border-gray-300'></div>
           <RoundedButton href='/dashboard'>Logga in</RoundedButton>
         </div>
       </nav>
