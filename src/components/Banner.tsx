@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import clsxm from '@/lib/clsxm';
 
 type BannerProps = {
-  src: string;
+  src?: string;
   children: ReactNode;
 };
 
@@ -19,10 +19,10 @@ export const Banner = ({ src, children }: BannerProps) => {
         )}
       />
       <Image
-        src='/dorm.jpg'
+        src={src ?? '/dorm.jpg'}
         alt=''
         loading='eager'
-        blurDataURL={src ? src : '/dorm.jpg'}
+        blurDataURL={src ?? '/dorm.jpg'}
         fill
         placeholder='blur'
         className='absolute inset-0 -z-10 h-full w-full object-cover'

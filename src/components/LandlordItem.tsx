@@ -9,16 +9,15 @@ type Props = {
   hasDivider?: boolean;
 };
 
-export const HousingItem = ({ hasDivider = true }: Props) => {
+export const LandlordItem = ({ hasDivider = true }: Props) => {
   return (
     <div
       className={clsxm(hasDivider ? 'border-t border-gray-200' : ' ', 'py-6')}
     >
-      <div className=' mb-4 h-[160px] rounded-md bg-orange-100'></div>
       <div className='flex items-center justify-between'>
         <div>
-          <p className='text-sm text-gray-500'>Centrum, Skövde</p>
-          <h4 className='text-lg'>Norra Trängallén 3</h4>
+          <p className='text-sm text-gray-500'> Skövde</p>
+          <h4 className='text-xl'>Lorentzon AB</h4>
           <span className='inline-flex items-center align-middle'>
             <BsStarFill className='text-yellow-500' size={24} />
             <BsStarFill className='text-yellow-500' size={24} />

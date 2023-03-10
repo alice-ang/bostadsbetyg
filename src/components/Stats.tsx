@@ -13,10 +13,10 @@ const stats = [
   {
     id: 1,
     name: 'Positiva',
-    stat: '71,87%',
+    stat: '71.87%',
     icon: RiEmotionHappyFill,
     color: 'bg-green-500',
-    change: '122',
+    change: '12%',
     changeType: 'increase',
   },
   {

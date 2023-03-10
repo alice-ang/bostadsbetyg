@@ -229,7 +229,7 @@ export default function DashboardPage() {
             <div className='mx-auto max-w-7xl '>
               <h2 className=' text-4xl font-normal text-gray-900'>
                 Välkommen{' '}
-                <span className=' text-yellow-500'>Fastigets AB Balder</span>
+                <span className=' text-yellow-500'>Fastighetsbolag AB</span>
               </h2>
               <p className='font-l text-sm text-gray-500 '>
                 Lorem ipsum dolor sit amet
