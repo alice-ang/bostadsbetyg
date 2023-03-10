@@ -1,12 +1,20 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 
 import clsxm from '@/lib/clsxm';
 
-import { Banner, Layout } from '@/components';
+import { Banner, Layout, Tabs } from '@/components';
 import Seo from '@/components/Seo';
 
+const tabs = [
+  { name: 'Omdömen', value: 'Reviews' },
+  { name: 'Hyresvärdar', value: 'Landlords' },
+];
+
 export default function ItemPage() {
+  const [currentTab, setCurrentTab] = useState<string>(tabs[0].value);
+
   return (
     <Layout>
       <Seo templateTitle='' />
@@ -14,7 +22,6 @@ export default function ItemPage() {
       <main>
         <section className='bg-white'>
           <Banner>
-            {' '}
             <h2 className=' text-3xl font-bold text-white sm:text-4xl'>
               Norra trängallén 3
             </h2>
@@ -35,6 +42,11 @@ export default function ItemPage() {
               </p>
             </div>
           </Banner>
+          <Tabs
+            tabs={tabs}
+            currentTab={currentTab}
+            setCurrentTab={(tab) => setCurrentTab(tab)}
+          />
         </section>
       </main>
     </Layout>
