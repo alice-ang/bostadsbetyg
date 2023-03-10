@@ -13,3 +13,4 @@ export * from './SearchList';
 export * from './SecondaryFeatures';
 export * from './Seo';
 export * from './Skeleton';
+export * from './Stats';

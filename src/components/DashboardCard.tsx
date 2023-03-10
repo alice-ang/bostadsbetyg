@@ -12,7 +12,7 @@ export const DashboardCard = ({ children, className }: DashboardCardProps) => {
     <div
       className={clsxm(
         className,
-        'flex-1 rounded-lg border border-gray-200 bg-white p-4 shadow-sm '
+        'flex-1 rounded-lg border border-gray-200 bg-white p-4 shadow'
       )}
     >
       {children}

@@ -1,16 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
+import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { GoGraph } from 'react-icons/go';
 import { MdClose, MdOutlineDashboard, MdOutlineReviews } from 'react-icons/md';
-import {
-  RiEmotionHappyFill,
-  RiEmotionNormalFill,
-  RiEmotionUnhappyFill,
-} from 'react-icons/ri';
+import { RiEmotionHappyFill } from 'react-icons/ri';
 
 import clsxm from '@/lib/clsxm';
 
-import { DashboardCard, RoundedButton } from '@/components';
+import { DashboardCard, RoundedButton, Stats } from '@/components';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
@@ -24,33 +21,6 @@ const navigation = [
     current: false,
   },
   { name: 'Rapporter', icon: GoGraph, href: '#', current: false },
-];
-
-const projects = [
-  {
-    id: 1,
-    title: 'Positiva',
-    icon: RiEmotionHappyFill,
-    totalReviews: 12,
-
-    bgColorClass: 'bg-green-500',
-  },
-  {
-    id: 2,
-    title: 'Neutrala',
-    icon: RiEmotionUnhappyFill,
-    totalReviews: 6,
-
-    bgColorClass: 'bg-yellow-500',
-  },
-  {
-    id: 3,
-    title: 'Negativa',
-    icon: RiEmotionNormalFill,
-    totalReviews: 4,
-
-    bgColorClass: 'bg-red-500',
-  },
 ];
 
 export default function DashboardPage() {
@@ -109,9 +79,12 @@ export default function DashboardPage() {
                   </div>
                 </Transition.Child>
                 <div className='h-0 flex-1 overflow-y-auto pt-5 pb-4'>
-                  <div className='flex flex-shrink-0 items-center px-4'>
-                    LOGO
-                  </div>
+                  <Link href='/' passHref>
+                    <div className='flex flex-shrink-0 items-center px-4'>
+                      LOGO
+                    </div>
+                  </Link>
+
                   <nav className='mt-5 space-y-1 px-2'>
                     {navigation.map((item) => (
                       <a
@@ -171,7 +144,9 @@ export default function DashboardPage() {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className='flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white px-4'>
           <div className='flex flex-1 flex-col overflow-y-auto pt-5 pb-4'>
-            <div className='flex flex-shrink-0 items-center '>Logo</div>
+            <Link href='/' passHref>
+              <div className='flex flex-shrink-0 items-center '>Logo</div>
+            </Link>
             <nav className='mt-5 flex-1 space-y-1 bg-white'>
               {navigation.map((item) => (
                 <a
@@ -260,39 +235,7 @@ export default function DashboardPage() {
             </div>
             <div className='mx-auto max-w-7xl pt-12'>
               <div className='my-6 '>
-                <ul
-                  role='list'
-                  className='mt-3 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3'
-                >
-                  {projects.map((project) => (
-                    <li
-                      key={project.id}
-                      className='relative col-span-1 flex rounded-md shadow-sm'
-                    >
-                      <div
-                        className={clsxm(
-                          project.bgColorClass,
-                          'flex items-center justify-center rounded-l-md p-4 text-white'
-                        )}
-                      >
-                        <project.icon
-                          className={clsxm('h-6 w-6 ')}
-                          aria-hidden='true'
-                        />
-                      </div>
-                      <div className='flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white'>
-                        <div className='flex-1 truncate px-4 py-2 text-sm'>
-                          <p className='font-medium text-gray-900 hover:text-gray-600'>
-                            {project.title}
-                          </p>
-                          <p className=' text-gray-500'>
-                            {project.totalReviews} Omdömen
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                <Stats />
               </div>
 
               <div className='grid grid-cols-3 gap-4'>
