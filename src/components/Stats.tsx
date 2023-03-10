@@ -46,9 +46,12 @@ export const Stats = () => {
         Omdömen senaste 30 dagarna
       </h3>
 
-      <dl className='mt-5 grid grid-cols-2  gap-5 xl:grid-cols-3'>
+      <dl className='mt-5 grid grid-cols-2 gap-5 md:grid-cols-3'>
         {stats.map((item) => (
-          <DashboardCard key={item.id}>
+          <DashboardCard
+            key={item.id}
+            className='relative cursor-pointer hover:bg-gray-50'
+          >
             <dt>
               <div className={clsxm(item.color, 'absolute rounded-md  p-3')}>
                 <item.icon className='h-6 w-6 text-white' aria-hidden='true' />
@@ -57,7 +60,7 @@ export const Stats = () => {
                 {item.name}
               </p>
             </dt>
-            <dd className='ml-16 flex flex-wrap items-baseline pb-6 sm:pb-7'>
+            <dd className='ml-16 flex flex-wrap items-baseline'>
               <p className='text-2xl font-semibold text-gray-900'>
                 {item.stat}
               </p>
@@ -90,17 +93,6 @@ export const Stats = () => {
                 </span>
                 {item.change}
               </p>
-              <div className='absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6'>
-                <div className='text-sm'>
-                  <a
-                    href='#'
-                    className='font-medium text-yellow-600 hover:text-yellow-500'
-                  >
-                    {' '}
-                    Se alla<span className='sr-only'> {item.name} stats</span>
-                  </a>
-                </div>
-              </div>
             </dd>
           </DashboardCard>
         ))}

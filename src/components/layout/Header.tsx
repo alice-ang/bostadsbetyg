@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { MdClose, MdMenu } from 'react-icons/md';
 
+import { Logo } from '@/components';
 import { RoundedButton } from '@/components/buttons';
 
 const navigation = [
@@ -22,7 +23,7 @@ export const Header = () => {
         <div className='flex lg:flex-1'>
           <Link href='#' className='-m-1.5 p-1.5' passHref>
             <span className='sr-only'>Your Company</span>
-            LOGO desktop
+            <Logo />
           </Link>
         </div>
         <div className='flex lg:hidden'>
@@ -60,8 +61,8 @@ export const Header = () => {
         <Dialog.Panel className='fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
           <div className='flex items-center justify-between'>
             <Link passHref href='#' className='-m-1.5 p-1.5'>
-              <span className='sr-only'>Your Company</span>
-              LOGO
+              <span className='sr-only'>Bostadsbetyg</span>
+              <Logo />
             </Link>
             <button
               type='button'

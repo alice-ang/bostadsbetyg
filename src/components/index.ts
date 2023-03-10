@@ -6,6 +6,7 @@ export * from './HomeSection';
 export * from './HousingItem';
 export * from './layout/index';
 export * from './links/index';
+export * from './Logo';
 export * from './NextImage';
 export * from './PrimaryFeatures';
 export * from './SearchBar';

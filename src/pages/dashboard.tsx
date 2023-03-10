@@ -7,7 +7,7 @@ import { RiEmotionHappyFill } from 'react-icons/ri';
 
 import clsxm from '@/lib/clsxm';
 
-import { DashboardCard, RoundedButton, Stats } from '@/components';
+import { DashboardCard, Logo, RoundedButton, Stats } from '@/components';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
@@ -81,7 +81,7 @@ export default function DashboardPage() {
                 <div className='h-0 flex-1 overflow-y-auto pt-5 pb-4'>
                   <Link href='/' passHref>
                     <div className='flex flex-shrink-0 items-center px-4'>
-                      LOGO
+                      <Logo />
                     </div>
                   </Link>
 
@@ -145,7 +145,9 @@ export default function DashboardPage() {
         <div className='flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white px-4'>
           <div className='flex flex-1 flex-col overflow-y-auto pt-5 pb-4'>
             <Link href='/' passHref>
-              <div className='flex flex-shrink-0 items-center '>Logo</div>
+              <div className='flex flex-shrink-0 items-center '>
+                <Logo />
+              </div>
             </Link>
             <nav className='mt-5 flex-1 space-y-1 bg-white'>
               {navigation.map((item) => (
@@ -217,7 +219,7 @@ export default function DashboardPage() {
             onClick={() => setSidebarOpen(true)}
           >
             <span className='sr-only'>Open sidebar</span>
-            LOGO
+            <Logo />
           </button>
         </div>
 
@@ -238,13 +240,19 @@ export default function DashboardPage() {
                 <Stats />
               </div>
 
-              <div className='grid grid-cols-3 gap-4'>
+              <div className='grid grid-cols-3 gap-5'>
+                <DashboardCard className='col-span-3 min-h-[260px]'>
+                  {' '}
+                  MAP
+                </DashboardCard>
+
                 <DashboardCard>
                   <p className='text-lg font-semibold'>Lorem ipsum</p>
                   <p className='text-sm text-gray-500'>
                     Lorem ipsum dolor sit amet
                   </p>
                 </DashboardCard>
+
                 <DashboardCard className='col-span-2'>
                   <p className='text-lg font-semibold'>Lorem ipsum</p>
                   <p className='text-sm text-gray-500'>
