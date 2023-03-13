@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
-import { Container } from '@/components';
+import { Browser, Container } from '@/components';
 
 import backgroundImage from '@/images/background-features.jpg';
 import screenshotExpenses from '@/images/screenshots/expenses.png';
@@ -137,15 +137,10 @@ export function PrimaryFeatures() {
                         {feature.description}
                       </p>
                     </div>
-                    <div className='mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]'>
-                      <Image
-                        className='w-full'
-                        src={feature.image}
-                        alt=''
-                        priority
-                        sizes='(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem'
-                      />
-                    </div>
+                    <Browser
+                      className='w-[45rem] lg:w-[67.8125rem]'
+                      src={feature.image}
+                    />
                   </Tab.Panel>
                 ))}
               </Tab.Panels>

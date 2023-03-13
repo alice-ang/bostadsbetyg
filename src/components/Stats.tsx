@@ -22,7 +22,7 @@ const stats = [
   {
     id: 2,
     name: 'Neutrala',
-    stat: '58.16%',
+    stat: '19.16%',
     icon: RiEmotionNormalFill,
     color: 'bg-yellow-500',
     change: '5.4%',
@@ -31,7 +31,7 @@ const stats = [
   {
     id: 3,
     name: 'Negativa',
-    stat: '24.57%',
+    stat: '9.57%',
     icon: RiEmotionUnhappyFill,
     color: 'bg-red-500',
     change: '3.2%',
@@ -61,7 +61,7 @@ export const Stats = () => {
               </p>
             </dt>
             <dd className='ml-16 flex flex-wrap items-baseline'>
-              <p className='text-2xl font-semibold text-gray-900'>
+              <p className='text-xl font-semibold text-gray-900 md:text-2xl'>
                 {item.stat}
               </p>
               <p

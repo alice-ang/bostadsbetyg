@@ -1,4 +1,5 @@
 export * from './Banner';
+export * from './Browser';
 export * from './buttons/index';
 export * from './Container';
 export * from './DashboardCard';

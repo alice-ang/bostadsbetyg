@@ -1,8 +1,13 @@
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, Disclosure, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { GoGraph } from 'react-icons/go';
-import { MdClose, MdOutlineDashboard, MdOutlineReviews } from 'react-icons/md';
+import {
+  MdClose,
+  MdMenu,
+  MdOutlineDashboard,
+  MdOutlineReviews,
+} from 'react-icons/md';
 import { RiEmotionHappyFill } from 'react-icons/ri';
 
 import clsxm from '@/lib/clsxm';
@@ -19,6 +24,10 @@ const navigation = [
     href: '#',
     count: 12,
     current: false,
+    children: [
+      { name: 'Visa upp omdömen', href: '#' },
+      { name: 'Samla in omdömen', href: '#' },
+    ],
   },
   { name: 'Rapporter', icon: GoGraph, href: '#', current: false },
 ];
@@ -86,29 +95,89 @@ export default function DashboardPage() {
                   </Link>
 
                   <nav className='mt-5 space-y-1 px-2'>
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={clsxm(
-                          item.current
-                            ? 'bg-orange-50 text-yellow-900'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                          'group flex items-center rounded-md px-2 py-2 text-base font-medium'
-                        )}
-                      >
-                        <item.icon
-                          className={clsxm(
-                            item.current
-                              ? 'text-yellow-500'
-                              : 'text-gray-400 group-hover:text-gray-500',
-                            'mr-4 h-6 w-6 flex-shrink-0'
+                    {navigation.map((item) =>
+                      !item.children ? (
+                        <div key={item.name}>
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={clsxm(
+                              item.current
+                                ? 'bg-orange-50 text-yellow-900'
+                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                              'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
+                            )}
+                          >
+                            <item.icon
+                              className={clsxm(
+                                item.current
+                                  ? 'text-yellow-500'
+                                  : 'text-gray-400 group-hover:text-gray-500',
+                                'mr-3 h-6 w-6 flex-shrink-0'
+                              )}
+                              aria-hidden='true'
+                            />
+                            {item.name}
+                          </a>
+                        </div>
+                      ) : (
+                        <Disclosure
+                          as='div'
+                          key={item.name}
+                          className='space-y-1'
+                        >
+                          {({ open }) => (
+                            <>
+                              <Disclosure.Button
+                                className={clsxm(
+                                  item.current
+                                    ? 'bg-orange-50 text-yellow-900'
+                                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                                  'group flex w-full items-center rounded-md py-2 pl-2 pr-1 text-left text-sm font-medium focus:outline-none '
+                                )}
+                              >
+                                <item.icon
+                                  className={clsxm(
+                                    item.current
+                                      ? 'text-yellow-500'
+                                      : 'text-gray-400 group-hover:text-gray-500',
+                                    'mr-3 h-6 w-6 flex-shrink-0'
+                                  )}
+                                />
+                                <span className='flex-1'>{item.name}</span>
+                                <svg
+                                  className={clsxm(
+                                    open
+                                      ? 'rotate-90 text-gray-400'
+                                      : 'text-gray-300',
+                                    'ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400'
+                                  )}
+                                  viewBox='0 0 20 20'
+                                  aria-hidden='true'
+                                >
+                                  <path
+                                    d='M6 6L14 10L6 14V6Z'
+                                    fill='currentColor'
+                                  />
+                                </svg>
+                              </Disclosure.Button>
+                              <Disclosure.Panel className='space-y-1'>
+                                {item.children.map((subItem) => (
+                                  <Disclosure.Button
+                                    key={subItem.name}
+                                    as='a'
+                                    href={subItem.href}
+                                    className='group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                  >
+                                    {subItem.name}
+                                  </Disclosure.Button>
+                                ))}
+                              </Disclosure.Panel>
+                            </>
                           )}
-                          aria-hidden='true'
-                        />
-                        {item.name}
-                      </a>
-                    ))}
+                        </Disclosure>
+                      )
+                    )}
                   </nav>
                 </div>
                 <div className='flex flex-shrink-0 border-t border-gray-200 p-4'>
@@ -150,29 +219,82 @@ export default function DashboardPage() {
               </div>
             </Link>
             <nav className='mt-5 flex-1 space-y-1 bg-white'>
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={clsxm(
-                    item.current
-                      ? 'bg-orange-50 text-yellow-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                    'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
-                  )}
-                >
-                  <item.icon
-                    className={clsxm(
-                      item.current
-                        ? 'text-yellow-500'
-                        : 'text-gray-400 group-hover:text-gray-500',
-                      'mr-3 h-6 w-6 flex-shrink-0'
+              {navigation.map((item) =>
+                !item.children ? (
+                  <div key={item.name}>
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={clsxm(
+                        item.current
+                          ? 'bg-orange-50 text-yellow-900'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
+                      )}
+                    >
+                      <item.icon
+                        className={clsxm(
+                          item.current
+                            ? 'text-yellow-500'
+                            : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-3 h-6 w-6 flex-shrink-0'
+                        )}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </a>
+                  </div>
+                ) : (
+                  <Disclosure as='div' key={item.name} className='space-y-1'>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button
+                          className={clsxm(
+                            item.current
+                              ? 'bg-orange-50 text-yellow-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex w-full items-center rounded-md py-2 pl-2 pr-1 text-left text-sm font-medium focus:outline-none '
+                          )}
+                        >
+                          <item.icon
+                            className={clsxm(
+                              item.current
+                                ? 'text-yellow-500'
+                                : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-3 h-6 w-6 flex-shrink-0'
+                            )}
+                          />
+                          <span className='flex-1'>{item.name}</span>
+                          <svg
+                            className={clsxm(
+                              open
+                                ? 'rotate-90 text-gray-400'
+                                : 'text-gray-300',
+                              'ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400'
+                            )}
+                            viewBox='0 0 20 20'
+                            aria-hidden='true'
+                          >
+                            <path d='M6 6L14 10L6 14V6Z' fill='currentColor' />
+                          </svg>
+                        </Disclosure.Button>
+                        <Disclosure.Panel className='space-y-1'>
+                          {item.children.map((subItem) => (
+                            <Disclosure.Button
+                              key={subItem.name}
+                              as='a'
+                              href={subItem.href}
+                              className='group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                            >
+                              {subItem.name}
+                            </Disclosure.Button>
+                          ))}
+                        </Disclosure.Panel>
+                      </>
                     )}
-                    aria-hidden='true'
-                  />
-                  {item.name}
-                </a>
-              ))}
+                  </Disclosure>
+                )
+              )}
             </nav>
             {/* Ad banner */}
             <div className='flex-col items-center justify-center rounded-lg bg-orange-50 p-4 text-center'>
@@ -219,7 +341,7 @@ export default function DashboardPage() {
             onClick={() => setSidebarOpen(true)}
           >
             <span className='sr-only'>Open sidebar</span>
-            <Logo />
+            <MdMenu className='h-6 w-6' aria-hidden='true' />
           </button>
         </div>
 

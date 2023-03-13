@@ -4,7 +4,7 @@ import { useId } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
-import { Container } from '@/components';
+import { Browser, Container } from '@/components';
 
 import screenshotContacts from '@/images/screenshots/contacts.png';
 import screenshotInventory from '@/images/screenshots/inventory.png';
@@ -190,14 +190,7 @@ function FeaturesDesktop() {
                   style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
                   aria-hidden={featureIndex !== selectedIndex}
                 >
-                  <div className='w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10'>
-                    <Image
-                      className='w-full'
-                      src={feature.image}
-                      alt=''
-                      sizes='52.75rem'
-                    />
-                  </div>
+                  <Browser className='w-[52.75rem]' src={feature.image} />
                 </Tab.Panel>
               ))}
             </div>

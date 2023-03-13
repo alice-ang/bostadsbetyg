@@ -21,7 +21,7 @@ export const Header = () => {
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
-          <Link href='#' className='-m-1.5 p-1.5' passHref>
+          <Link href='/' className='-m-1.5 p-1.5' passHref>
             <span className='sr-only'>Your Company</span>
             <Logo />
           </Link>

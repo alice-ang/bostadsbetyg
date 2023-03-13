@@ -64,7 +64,7 @@ export default function SearchPage() {
             </div>
           )}
         </div>
-        <div className=' col-span-6 bg-gray-100  md:col-span-3 xl:col-span-4'>
+        <div className='order-first col-span-6  min-h-[200px] bg-gray-100 md:order-last md:col-span-3 xl:col-span-4'>
           GOOGLE MAPS HERE PLS
         </div>
       </main>
