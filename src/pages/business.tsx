@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { Layout, PrimaryFeatures, SecondaryFeatures } from '@/components';
+import {
+  Layout,
+  Pricing,
+  PrimaryFeatures,
+  SecondaryFeatures,
+} from '@/components';
 import Seo from '@/components/Seo';
 
 export default function BusinessPage() {
@@ -11,6 +16,8 @@ export default function BusinessPage() {
       <main>
         <section className='bg-white'>
           <PrimaryFeatures />
+          <Pricing />
+
           <SecondaryFeatures />
         </section>
       </main>
