@@ -8,7 +8,12 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    domains: ['res.cloudinary.com', 'images.unsplash.com', 'tailwindui.com'],
+    domains: [
+      'res.cloudinary.com',
+      'images.unsplash.com',
+      'tailwindui.com',
+      'source.unsplash.com',
+    ],
   },
 
   // SVGR

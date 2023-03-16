@@ -1,16 +1,18 @@
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, Disclosure, Transition } from '@headlessui/react';
+import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { GoGraph } from 'react-icons/go';
-import { MdClose, MdOutlineDashboard, MdOutlineReviews } from 'react-icons/md';
 import {
-  RiEmotionHappyFill,
-  RiEmotionNormalFill,
-  RiEmotionUnhappyFill,
-} from 'react-icons/ri';
+  MdClose,
+  MdMenu,
+  MdOutlineDashboard,
+  MdOutlineReviews,
+} from 'react-icons/md';
+import { RiEmotionHappyFill } from 'react-icons/ri';
 
 import clsxm from '@/lib/clsxm';
 
-import { DashboardCard, RoundedButton } from '@/components';
+import { DashboardCard, Logo, RoundedButton, Stats } from '@/components';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
@@ -22,35 +24,12 @@ const navigation = [
     href: '#',
     count: 12,
     current: false,
+    children: [
+      { name: 'Visa upp omdömen', href: '#' },
+      { name: 'Samla in omdömen', href: '#' },
+    ],
   },
   { name: 'Rapporter', icon: GoGraph, href: '#', current: false },
-];
-
-const projects = [
-  {
-    id: 1,
-    title: 'Positiva',
-    icon: RiEmotionHappyFill,
-    totalReviews: 12,
-
-    bgColorClass: 'bg-green-500',
-  },
-  {
-    id: 2,
-    title: 'Neutrala',
-    icon: RiEmotionUnhappyFill,
-    totalReviews: 6,
-
-    bgColorClass: 'bg-yellow-500',
-  },
-  {
-    id: 3,
-    title: 'Negativa',
-    icon: RiEmotionNormalFill,
-    totalReviews: 4,
-
-    bgColorClass: 'bg-red-500',
-  },
 ];
 
 export default function DashboardPage() {
@@ -109,33 +88,96 @@ export default function DashboardPage() {
                   </div>
                 </Transition.Child>
                 <div className='h-0 flex-1 overflow-y-auto pt-5 pb-4'>
-                  <div className='flex flex-shrink-0 items-center px-4'>
-                    LOGO
-                  </div>
+                  <Link href='/' passHref>
+                    <div className='flex flex-shrink-0 items-center px-4'>
+                      <Logo />
+                    </div>
+                  </Link>
+
                   <nav className='mt-5 space-y-1 px-2'>
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={clsxm(
-                          item.current
-                            ? 'bg-orange-50 text-yellow-900'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                          'group flex items-center rounded-md px-2 py-2 text-base font-medium'
-                        )}
-                      >
-                        <item.icon
-                          className={clsxm(
-                            item.current
-                              ? 'text-yellow-500'
-                              : 'text-gray-400 group-hover:text-gray-500',
-                            'mr-4 h-6 w-6 flex-shrink-0'
+                    {navigation.map((item) =>
+                      !item.children ? (
+                        <div key={item.name}>
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={clsxm(
+                              item.current
+                                ? 'bg-orange-50 text-yellow-900'
+                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                              'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
+                            )}
+                          >
+                            <item.icon
+                              className={clsxm(
+                                item.current
+                                  ? 'text-yellow-500'
+                                  : 'text-gray-400 group-hover:text-gray-500',
+                                'mr-3 h-6 w-6 flex-shrink-0'
+                              )}
+                              aria-hidden='true'
+                            />
+                            {item.name}
+                          </a>
+                        </div>
+                      ) : (
+                        <Disclosure
+                          as='div'
+                          key={item.name}
+                          className='space-y-1'
+                        >
+                          {({ open }) => (
+                            <>
+                              <Disclosure.Button
+                                className={clsxm(
+                                  item.current
+                                    ? 'bg-orange-50 text-yellow-900'
+                                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                                  'group flex w-full items-center rounded-md py-2 pl-2 pr-1 text-left text-sm font-medium focus:outline-none '
+                                )}
+                              >
+                                <item.icon
+                                  className={clsxm(
+                                    item.current
+                                      ? 'text-yellow-500'
+                                      : 'text-gray-400 group-hover:text-gray-500',
+                                    'mr-3 h-6 w-6 flex-shrink-0'
+                                  )}
+                                />
+                                <span className='flex-1'>{item.name}</span>
+                                <svg
+                                  className={clsxm(
+                                    open
+                                      ? 'rotate-90 text-gray-400'
+                                      : 'text-gray-300',
+                                    'ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400'
+                                  )}
+                                  viewBox='0 0 20 20'
+                                  aria-hidden='true'
+                                >
+                                  <path
+                                    d='M6 6L14 10L6 14V6Z'
+                                    fill='currentColor'
+                                  />
+                                </svg>
+                              </Disclosure.Button>
+                              <Disclosure.Panel className='space-y-1'>
+                                {item.children.map((subItem) => (
+                                  <Disclosure.Button
+                                    key={subItem.name}
+                                    as='a'
+                                    href={subItem.href}
+                                    className='group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                  >
+                                    {subItem.name}
+                                  </Disclosure.Button>
+                                ))}
+                              </Disclosure.Panel>
+                            </>
                           )}
-                          aria-hidden='true'
-                        />
-                        {item.name}
-                      </a>
-                    ))}
+                        </Disclosure>
+                      )
+                    )}
                   </nav>
                 </div>
                 <div className='flex flex-shrink-0 border-t border-gray-200 p-4'>
@@ -171,31 +213,88 @@ export default function DashboardPage() {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className='flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white px-4'>
           <div className='flex flex-1 flex-col overflow-y-auto pt-5 pb-4'>
-            <div className='flex flex-shrink-0 items-center '>Logo</div>
+            <Link href='/' passHref>
+              <div className='flex flex-shrink-0 items-center '>
+                <Logo />
+              </div>
+            </Link>
             <nav className='mt-5 flex-1 space-y-1 bg-white'>
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={clsxm(
-                    item.current
-                      ? 'bg-orange-50 text-yellow-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                    'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
-                  )}
-                >
-                  <item.icon
-                    className={clsxm(
-                      item.current
-                        ? 'text-yellow-500'
-                        : 'text-gray-400 group-hover:text-gray-500',
-                      'mr-3 h-6 w-6 flex-shrink-0'
+              {navigation.map((item) =>
+                !item.children ? (
+                  <div key={item.name}>
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={clsxm(
+                        item.current
+                          ? 'bg-orange-50 text-yellow-900'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group flex items-center rounded-md px-2 py-2 text-sm font-medium'
+                      )}
+                    >
+                      <item.icon
+                        className={clsxm(
+                          item.current
+                            ? 'text-yellow-500'
+                            : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-3 h-6 w-6 flex-shrink-0'
+                        )}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </a>
+                  </div>
+                ) : (
+                  <Disclosure as='div' key={item.name} className='space-y-1'>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button
+                          className={clsxm(
+                            item.current
+                              ? 'bg-orange-50 text-yellow-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex w-full items-center rounded-md py-2 pl-2 pr-1 text-left text-sm font-medium focus:outline-none '
+                          )}
+                        >
+                          <item.icon
+                            className={clsxm(
+                              item.current
+                                ? 'text-yellow-500'
+                                : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-3 h-6 w-6 flex-shrink-0'
+                            )}
+                          />
+                          <span className='flex-1'>{item.name}</span>
+                          <svg
+                            className={clsxm(
+                              open
+                                ? 'rotate-90 text-gray-400'
+                                : 'text-gray-300',
+                              'ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400'
+                            )}
+                            viewBox='0 0 20 20'
+                            aria-hidden='true'
+                          >
+                            <path d='M6 6L14 10L6 14V6Z' fill='currentColor' />
+                          </svg>
+                        </Disclosure.Button>
+                        <Disclosure.Panel className='space-y-1'>
+                          {item.children.map((subItem) => (
+                            <Disclosure.Button
+                              key={subItem.name}
+                              as='a'
+                              href={subItem.href}
+                              className='group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                            >
+                              {subItem.name}
+                            </Disclosure.Button>
+                          ))}
+                        </Disclosure.Panel>
+                      </>
                     )}
-                    aria-hidden='true'
-                  />
-                  {item.name}
-                </a>
-              ))}
+                  </Disclosure>
+                )
+              )}
             </nav>
             {/* Ad banner */}
             <div className='flex-col items-center justify-center rounded-lg bg-orange-50 p-4 text-center'>
@@ -242,7 +341,7 @@ export default function DashboardPage() {
             onClick={() => setSidebarOpen(true)}
           >
             <span className='sr-only'>Open sidebar</span>
-            LOGO
+            <MdMenu className='h-6 w-6' aria-hidden='true' />
           </button>
         </div>
 
@@ -252,7 +351,7 @@ export default function DashboardPage() {
             <div className='mx-auto max-w-7xl '>
               <h2 className=' text-4xl font-normal text-gray-900'>
                 Välkommen{' '}
-                <span className=' text-yellow-500'>Fastigets AB Balder</span>
+                <span className=' text-yellow-500'>Fastighetsbolag AB</span>
               </h2>
               <p className='font-l text-sm text-gray-500 '>
                 Lorem ipsum dolor sit amet
@@ -260,48 +359,22 @@ export default function DashboardPage() {
             </div>
             <div className='mx-auto max-w-7xl pt-12'>
               <div className='my-6 '>
-                <ul
-                  role='list'
-                  className='mt-3 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3'
-                >
-                  {projects.map((project) => (
-                    <li
-                      key={project.id}
-                      className='relative col-span-1 flex rounded-md shadow-sm'
-                    >
-                      <div
-                        className={clsxm(
-                          project.bgColorClass,
-                          'flex items-center justify-center rounded-l-md p-4 text-white'
-                        )}
-                      >
-                        <project.icon
-                          className={clsxm('h-6 w-6 ')}
-                          aria-hidden='true'
-                        />
-                      </div>
-                      <div className='flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white'>
-                        <div className='flex-1 truncate px-4 py-2 text-sm'>
-                          <p className='font-medium text-gray-900 hover:text-gray-600'>
-                            {project.title}
-                          </p>
-                          <p className=' text-gray-500'>
-                            {project.totalReviews} Omdömen
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                <Stats />
               </div>
 
-              <div className='grid grid-cols-3 gap-4'>
+              <div className='grid grid-cols-3 gap-5'>
+                <DashboardCard className='col-span-3 min-h-[260px]'>
+                  {' '}
+                  MAP
+                </DashboardCard>
+
                 <DashboardCard>
                   <p className='text-lg font-semibold'>Lorem ipsum</p>
                   <p className='text-sm text-gray-500'>
                     Lorem ipsum dolor sit amet
                   </p>
                 </DashboardCard>
+
                 <DashboardCard className='col-span-2'>
                   <p className='text-lg font-semibold'>Lorem ipsum</p>
                   <p className='text-sm text-gray-500'>
