@@ -19,5 +19,6 @@ export * from './SearchList';
 export * from './SecondaryFeatures';
 export * from './Seo';
 export * from './Skeleton';
+export * from './StarRatings';
 export * from './Stats';
 export * from './Tabs';

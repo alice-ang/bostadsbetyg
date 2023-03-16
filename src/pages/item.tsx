@@ -95,7 +95,7 @@ const amenities = [
 const reviews = [
   {
     id: 1,
-    title: 'Ok lägenhet men bra kundservice',
+    title: 'Ok lägenhet men väldigt bra kundservice',
     rating: 3,
     content: `
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut felis eros. Aenean ac orci lorem. Sed vulputate interdum maximus. Morbi hendrerit, nisl ut malesuada auctor, turpis lacus rutrum erat, at pulvinar ante ligula at ex. Aliquam et enim dolor. Nam tempus, est id maximus semper, lectus leo dignissim tortor, non fermentum eros tellus a ligula! </p>
