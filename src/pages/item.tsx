@@ -226,7 +226,7 @@ export default function ItemPage() {
               )}
             </div>
             <div className='order-first  col-span-6 min-h-[120px] rounded bg-white shadow xl:order-last xl:col-span-1'>
-              Marknadsför nybyggen
+              BANNER
             </div>
           </div>
         </section>
