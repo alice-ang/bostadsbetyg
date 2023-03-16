@@ -43,8 +43,8 @@ export const Footer = () => {
         </div>
         <div className='mt-8 md:order-1 md:mt-0'>
           <p className='text-center text-sm leading-5 text-gray-500'>
-            &copy; {new Date().getFullYear()} Bostadsbetyg.se | All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Bostadsbetyg.se | Alla rättigheter
+            förbehållna
           </p>
         </div>
       </div>
