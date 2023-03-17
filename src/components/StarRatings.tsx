@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const StarRatings = ({ onRate, defaultRating, className }: Props) => {
-  const [selectedRating, setSelectedRating] = useState(defaultRating ?? 1);
+  const [selectedRating, setSelectedRating] = useState(defaultRating ?? 0);
   const [hoverStar, setHoverStar] = useState(selectedRating);
 
   return (

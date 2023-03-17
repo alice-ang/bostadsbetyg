@@ -1,7 +1,4 @@
-import { AiFillStar } from 'react-icons/ai';
-
-import clsxm from '@/lib/clsxm';
-
+import { LogoRating } from '@/components/LogoRating';
 import NextImage from '@/components/NextImage';
 
 type Props = {
@@ -37,18 +34,7 @@ export const Review = ({ review }: Props) => {
           </span>
         </div>
 
-        <div className='flex items-center'>
-          {[0, 1, 2, 3, 4].map((num) => (
-            <AiFillStar
-              key={num}
-              className={clsxm(
-                review.rating > num ? 'text-yellow-400' : 'text-gray-300',
-                'h-7 w-7 '
-              )}
-              aria-hidden='true'
-            />
-          ))}
-        </div>
+        <LogoRating rating={review.rating} />
       </div>
       <div className='my-4 border-t'></div>
       <div key={review.id} className='flex flex-col '>

@@ -51,6 +51,7 @@ const ratings = [
 
 export const RatingsContent = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
+
   return (
     <div>
       {ratings.map((step, i) => {
@@ -106,6 +107,7 @@ export const RatingsContent = () => {
                           if (j == step.children.length - 1) {
                             setCurrentIdx(i + 1);
 
+                            // Is end
                             ratings[
                               i != ratings.length - 1 ? i + 1 : i
                             ].ref.current?.scrollIntoView({

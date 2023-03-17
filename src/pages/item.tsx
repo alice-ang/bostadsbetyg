@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { AiFillStar } from 'react-icons/ai';
 
-import clsxm from '@/lib/clsxm';
-
-import { Banner, Layout, Review, Tabs } from '@/components';
+import { Banner, Layout, LogoRating, Review, Tabs } from '@/components';
 import { Breakdown } from '@/components/Breakdown';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
 const tabs = [
-  { name: 'Lägenhet', value: 'apartment' },
+  // { name: 'Lägenhet', value: 'apartment' },
   { name: 'Omdömen', value: 'reviews' },
   { name: 'Bilder', value: 'photos' },
 ];
@@ -136,7 +133,7 @@ const reviews = [
 ];
 
 export default function ItemPage() {
-  const [currentTab, setCurrentTab] = useState<string>(tabs[1].value);
+  const [currentTab, setCurrentTab] = useState<string>(tabs[0].value);
 
   return (
     <Layout>
@@ -149,16 +146,7 @@ export default function ItemPage() {
             Norra trängallén 3
           </h2>
           <div className='flex flex-wrap  items-center justify-center'>
-            {[0, 1, 2, 3, 4].map((rating) => (
-              <AiFillStar
-                key={rating}
-                className={clsxm(
-                  4 > rating ? 'text-yellow-400' : 'text-gray-300',
-                  'my-2 h-8 w-8 flex-shrink-0'
-                )}
-                aria-hidden='true'
-              />
-            ))}
+            <LogoRating rating={4} />
             <p className='sr-only'>{4} out of 5 stars</p>
             <p className='text-med ml-2 text-white'>
               (3.8) based on {reviews.length} reviews
@@ -214,14 +202,17 @@ export default function ItemPage() {
               </nav>
             </div>
             <div className='col-span-6 rounded  md:col-span-3 xl:col-span-3'>
-              <Tabs
-                tabs={tabs}
-                currentTab={currentTab}
-                hiddenTab={tabs[0].value}
-                setCurrentTab={(tab) => setCurrentTab(tab)}
-              />
+              <span className='sticky top-0'>
+                <Tabs
+                  tabs={tabs}
+                  currentTab={currentTab}
+                  // hiddenTab={tabs[0].value}
+                  setCurrentTab={(tab) => setCurrentTab(tab)}
+                />
+              </span>
+
               {currentTab == 'reviews' && (
-                <section className=''>
+                <section className='overflow-x-hidden'>
                   {[...reviews, ...reviews, ...reviews].map((review) => {
                     return <Review key={review.id} review={review} />;
                   })}

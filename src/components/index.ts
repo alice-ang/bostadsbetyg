@@ -11,6 +11,7 @@ export * from './LandlordItem';
 export * from './layout/index';
 export * from './links/index';
 export * from './Logo';
+export * from './LogoRating';
 export * from './NextImage';
 export * from './Pricing';
 export * from './PrimaryFeatures';
