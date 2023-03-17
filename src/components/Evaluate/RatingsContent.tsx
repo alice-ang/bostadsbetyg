@@ -3,6 +3,7 @@ import React from 'react';
 
 import clsxm from '@/lib/clsxm';
 
+import { Scribble } from '@/components';
 import { StarRatings } from '@/components/StarRatings';
 
 const ratings = [
@@ -51,7 +52,7 @@ const ratings = [
 export const RatingsContent = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   return (
-    <>
+    <div>
       {ratings.map((step, i) => {
         return (
           <div
@@ -117,7 +118,6 @@ export const RatingsContent = () => {
                   );
                 })}
             </div>
-
             {!step.children ? (
               <span className='md:pl-4'>
                 <StarRatings
@@ -136,6 +136,26 @@ export const RatingsContent = () => {
           </div>
         );
       })}
-    </>
+
+      <>
+        <h2 className='pt-8 text-center text-xl font-medium'>Ditt betyg:</h2>
+
+        <div className='flex items-center justify-center'>
+          <Scribble>
+            <div className='text-center text-3xl font-bold'>
+              <span className='ml-2 text-yellow-500'>{3}</span> / 5
+              <span
+                role='img'
+                aria-label='rating'
+                aria-hidden='false'
+                className='ml-2 text-2xl'
+              >
+                ⭐️
+              </span>
+            </div>
+          </Scribble>
+        </div>
+      </>
+    </div>
   );
 };

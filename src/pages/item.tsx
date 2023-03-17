@@ -9,7 +9,7 @@ import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
 const tabs = [
-  // { name: 'Lägenhet', value: 'item' },
+  { name: 'Lägenhet', value: 'apartment' },
   { name: 'Omdömen', value: 'reviews' },
   { name: 'Bilder', value: 'photos' },
 ];
@@ -136,7 +136,7 @@ const reviews = [
 ];
 
 export default function ItemPage() {
-  const [currentTab, setCurrentTab] = useState<string>(tabs[0].value);
+  const [currentTab, setCurrentTab] = useState<string>(tabs[1].value);
 
   return (
     <Layout>
@@ -176,57 +176,60 @@ export default function ItemPage() {
           </div>
         </Banner>
         <section className='mx-auto max-w-7xl py-4 px-4 md:py-6 lg:py-8'>
-          <div className='grid grid-cols-6 gap-3 md:gap-5'>
-            <div className='col-span-6 rounded bg-white  p-4 shadow md:col-span-3 md:p-6 xl:col-span-2'>
-              <h4 className='text-center text-xl font-extrabold tracking-tight text-gray-700 sm:text-3xl'>
-                Betyg
-              </h4>
-              <dl className=' mt-4 space-y-4  '>
-                {amenities.map((item) => {
-                  return (
-                    <Breakdown
-                      icon={item.icon}
-                      count={item.count}
-                      totalCount={item.totalCount}
-                      title={item.type}
-                      key={item.type}
-                    />
-                  );
-                })}
-              </dl>
-              <div className='mt-8 border-t border-gray-200 pt-10'>
-                <h4 className='pb-4 text-center text-xl font-extrabold tracking-tight text-gray-700 sm:text-3xl'>
-                  Karta
+          <div className='grid grid-cols-6 gap-3 md:gap-5 '>
+            <div className=' col-span-6 rounded bg-white p-4 shadow md:col-span-3 md:p-6 xl:col-span-2'>
+              <nav aria-label='sidebar' className='sticky top-4'>
+                <h4 className='text-center text-xl font-extrabold tracking-tight text-gray-700 sm:text-3xl'>
+                  Betyg
                 </h4>
-                <div className='h-[250px]'>
-                  <iframe
-                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8364.976577639782!2d13.836858432796966!3d58.38928326703061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465b023d3a4c413d%3A0x817d30b9033d4604!2zU2vDtnZkZQ!5e0!3m2!1ssv!2sse!4v1678730360113!5m2!1ssv!2sse'
-                    width='100%'
-                    height='100%'
-                    style={{ border: 0 }}
-                    allowFullScreen={true}
-                    aria-hidden='false'
-                    tabIndex={0}
-                  />
+                <dl className=' mt-4 space-y-4  '>
+                  {amenities.map((item) => {
+                    return (
+                      <Breakdown
+                        icon={item.icon}
+                        count={item.count}
+                        totalCount={item.totalCount}
+                        title={item.type}
+                        key={item.type}
+                      />
+                    );
+                  })}
+                </dl>
+                <div className='mt-8 border-t border-gray-200 pt-10'>
+                  <h4 className='pb-4 text-center text-xl font-extrabold tracking-tight text-gray-700 sm:text-3xl'>
+                    Karta
+                  </h4>
+                  <div className='h-[250px]'>
+                    <iframe
+                      src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8364.976577639782!2d13.836858432796966!3d58.38928326703061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465b023d3a4c413d%3A0x817d30b9033d4604!2zU2vDtnZkZQ!5e0!3m2!1ssv!2sse!4v1678730360113!5m2!1ssv!2sse'
+                      width='100%'
+                      height='100%'
+                      style={{ border: 0 }}
+                      allowFullScreen={true}
+                      aria-hidden='false'
+                      tabIndex={0}
+                    />
+                  </div>
                 </div>
-              </div>
+              </nav>
             </div>
             <div className='col-span-6 rounded  md:col-span-3 xl:col-span-3'>
               <Tabs
                 tabs={tabs}
                 currentTab={currentTab}
+                hiddenTab={tabs[0].value}
                 setCurrentTab={(tab) => setCurrentTab(tab)}
               />
               {currentTab == 'reviews' && (
-                <section>
-                  {reviews.map((review) => {
+                <section className=''>
+                  {[...reviews, ...reviews, ...reviews].map((review) => {
                     return <Review key={review.id} review={review} />;
                   })}
                 </section>
               )}
             </div>
-            <div className='order-first  col-span-6 min-h-[120px] rounded bg-white shadow xl:order-last xl:col-span-1'>
-              BANNER
+            <div className='order-first col-span-6 min-h-[120px] space-y-4 rounded bg-white shadow xl:order-last xl:col-span-1'>
+              <div className='sticky top-4'>BANNER</div>
             </div>
           </div>
         </section>

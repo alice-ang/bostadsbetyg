@@ -11,6 +11,7 @@ type Props = {
 
 export const StarRatings = ({ onRate, defaultRating, className }: Props) => {
   const [selectedRating, setSelectedRating] = useState(defaultRating ?? 1);
+  const [hoverStar, setHoverStar] = useState(selectedRating);
 
   return (
     <div className='flex w-fit'>
@@ -19,7 +20,7 @@ export const StarRatings = ({ onRate, defaultRating, className }: Props) => {
           key={star}
           className={clsxm(
             className ? className : 'h-8 w-8 ',
-            selectedRating > star ? 'text-yellow-400' : 'text-gray-300',
+            hoverStar > star ? 'text-yellow-400' : 'text-gray-300',
             'my-2 flex-shrink-0 hover:text-yellow-400'
           )}
           aria-hidden='true'
@@ -27,6 +28,8 @@ export const StarRatings = ({ onRate, defaultRating, className }: Props) => {
             setSelectedRating(star + 1);
             onRate(star + 1);
           }}
+          onMouseEnter={() => setHoverStar(star + 1)}
+          onMouseLeave={() => setHoverStar(selectedRating)}
         />
       ))}
     </div>

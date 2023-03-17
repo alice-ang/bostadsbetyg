@@ -15,6 +15,7 @@ export * from './NextImage';
 export * from './Pricing';
 export * from './PrimaryFeatures';
 export * from './Review';
+export * from './Scribble';
 export * from './SearchBar';
 export * from './SearchList';
 export * from './SecondaryFeatures';
