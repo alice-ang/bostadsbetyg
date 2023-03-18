@@ -25,7 +25,7 @@ export const LogoRating = ({ rating, size = 36 }: Props) => {
             <AiFillStar
               className={clsxm(
                 rating > num ? 'text-yellow-400' : 'text-gray-300',
-                'absolute h-7 w-full pt-0.5'
+                'absolute h-7 w-7 pt-0.5'
               )}
               aria-hidden='true'
             />

@@ -137,7 +137,7 @@ export default function ItemPage() {
 
   return (
     <Layout>
-      <Seo templateTitle='' />
+      <Seo templateTitle='{{Item}}' />
 
       <main className='bg-slate-50'>
         <Banner src='https://source.unsplash.com/random/1920x1080/?apartment,dorm'>

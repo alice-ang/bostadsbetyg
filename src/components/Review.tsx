@@ -17,8 +17,8 @@ type Props = {
 export const Review = ({ review }: Props) => {
   return (
     <div className='mt-4 flex flex-col rounded bg-white p-6 shadow'>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center '>
+      <div className='flex flex-wrap items-center justify-between'>
+        <div className='flex flex-wrap items-center'>
           <NextImage
             src={review.author.avatar}
             alt={`${review.author.name}.`}
