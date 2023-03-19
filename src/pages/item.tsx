@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { useState } from 'react';
+import { BsPencilSquare } from 'react-icons/bs';
 
 import { Banner, Layout, LogoRating, Review, Tabs } from '@/components';
 import { Breakdown } from '@/components/Breakdown';
@@ -219,8 +221,21 @@ export default function ItemPage() {
                 </section>
               )}
             </div>
-            <div className='order-first col-span-6 min-h-[120px] space-y-4 rounded bg-white shadow xl:order-last xl:col-span-1'>
-              <div className='sticky top-4'>BANNER</div>
+            <div className='order-first col-span-6 min-h-[120px] space-y-4 rounded bg-white p-4 shadow xl:order-last xl:col-span-1'>
+              <div className='sticky top-4'>
+                <div className=''>
+                  <h3 className='text-lg font-medium text-gray-900'>
+                    Dela dina erfarenheter
+                  </h3>
+
+                  <Link
+                    href='/evaluate'
+                    className='border-yellow-6500 mt-3 inline-flex w-full items-center justify-center rounded-md border bg-yellow-500 py-3  text-center  text-sm font-medium text-white hover:border-yellow-700 hover:bg-orange-50 hover:text-orange-900 sm:w-auto lg:w-full'
+                  >
+                    Skriv omdöme <BsPencilSquare className='ml-2 ' size={18} />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
