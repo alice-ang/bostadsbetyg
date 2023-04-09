@@ -4,7 +4,7 @@ export * from './Browser';
 export * from './buttons/index';
 export * from './Container';
 export * from './DashboardCard';
-export * from './evaluate';
+export * from './evaluate/index';
 export * from './Footer';
 export * from './HomeSection';
 export * from './HousingItem';
