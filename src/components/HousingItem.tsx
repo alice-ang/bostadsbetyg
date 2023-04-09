@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-import { AiFillStar } from 'react-icons/ai';
 
 import clsxm from '@/lib/clsxm';
 
+import { LogoRating } from '@/components';
 import NextImage from '@/components/NextImage';
 
 type Props = {
@@ -42,16 +42,7 @@ export const HousingItem = ({ hasDivider = true, apartment }: Props) => {
           </p>
           <h4 className='text-lg'>{apartment.street}</h4>
           <span className='inline-flex items-center align-middle'>
-            {[0, 1, 2, 3, 4].map((i) => (
-              <AiFillStar
-                key={i}
-                className={clsxm(
-                  apartment.rating > i ? 'text-yellow-400' : 'text-gray-300',
-                  'h-7 w-7 flex-shrink-0'
-                )}
-                aria-hidden='true'
-              />
-            ))}
+            <LogoRating rating={apartment.rating} size={32} />
 
             <span className='pl-2 text-sm'>
               ({apartment.numOfReviews} omdömen)

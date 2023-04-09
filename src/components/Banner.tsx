@@ -19,10 +19,10 @@ export const Banner = ({ src, children }: BannerProps) => {
         )}
       />
       <Image
-        src={src ?? '/dorm.jpg'}
+        src={src ?? '/room.jpg'}
         alt=''
         loading='eager'
-        blurDataURL={src ?? '/dorm.jpg'}
+        blurDataURL={src ?? '/room.jpg'}
         fill
         placeholder='blur'
         className='absolute inset-0 -z-10 h-full w-full object-cover'
