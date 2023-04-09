@@ -21,7 +21,7 @@ export const BackToTop = () => {
     <div
       className={clsxm(
         isShown ? 'fixed' : 'hidden',
-        ' bottom-6 right-6 flex animate-bounce cursor-pointer items-center justify-center rounded-full bg-yellow-500 p-4 shadow'
+        ' bottom-6 right-6  max-w-fit animate-bounce cursor-pointer items-center justify-center rounded-full bg-yellow-500 p-4 shadow'
       )}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
